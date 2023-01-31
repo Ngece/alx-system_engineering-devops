@@ -2,4 +2,4 @@
 # Shows all processes, for all users, including those
 # that might not have a TTY.
 
-ps -auxf
+ps -aux | less
