@@ -4,6 +4,6 @@
 
 while true
 do
-  echo "I am alive!" >> /tmp/my_process
-  read -t 2 -p 
+  
+  read -t 2 -p "I am alive!" >> /tmp/my_process 
 done
