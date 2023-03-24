@@ -1,4 +1,5 @@
 # Create a file using Puppet
+# Set with permisions and ownership and content
 
 file { '/tmp/school':
     ensure => file,
@@ -8,3 +9,4 @@ file { '/tmp/school':
     group => 'www-data',
     content => 'I love Puppet',
 }
+
