@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# Installs HAProxy load balancer
+# Uses the roundrobin algorithm
+# Can be managed via an init script
+
+apt-get install --no-install-recommends software-properties-common
+add-apt-repository ppa:vbernat/haproxy-2.6
+apt-get install haproxy=2.6.\*
+
+printf %s "backend web-backend
+	balance roundrobin
+	server 105686-web-01 54.86.32.120:80 check
+	server 105686-web-02 54.237.2.233:80 check
+	" > /etc/haproxy/haproxy.cfg
+
