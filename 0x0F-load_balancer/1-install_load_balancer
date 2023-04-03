@@ -13,4 +13,4 @@ printf %s "backend web-backend
 	server 105686-web-01 54.86.32.120:80 check
 	server 105686-web-02 54.237.2.233:80 check
 	" > /etc/haproxy/haproxy.cfg
-
+echo "ENABLED=1" >> /etc/default/haproxy
