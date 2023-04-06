@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # function to output information for a given subdomain
 function get_subdomain_info {
