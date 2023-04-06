@@ -1,19 +1,38 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-# Display information about subdomains.
+# function to output information for a given subdomain
+function get_subdomain_info {
+    # query DNS records for the subdomain and capture the output
+    result=$(dig +short "$1.$2")
 
-domain_information () {
-    line=$(dig "$2"."$1" | grep -A1 'ANSWER SECTION:' | tr '\t' '\n' | tail -2 | tr '\n' ' ')
-    echo "$2 $line" | awk '{print "The subdomain " $1 " is a " $2 " record and points to " $3}'
+    # check if there are any records for the subdomain
+    if [ -n "$result" ]; then
+        # output the record type and destination IP
+        echo "The subdomain $1 is a $(echo $result | awk '{print $1}') record and points to $(echo $result | awk '{print $2}')"
+    else
+        # output an error message if no records were found
+        echo "No records found for the subdomain $1"
+    fi
 }
 
-if [ "$#" == 1 ]
-then
-  domain_information "$1" "www"
-  domain_information "$1" "lb-01"
-  domain_information "$1" "web-01"
-  domain_information "$1" "web-02"
-elif [ "$#" == 2 ]
-then
-  domain_information "$1" "$2"
+# check if the domain parameter is provided
+if [ -n "$1" ]; then
+    # add default subdomains
+    subdomains=("www" "lb-01" "web-01" "web-02")
+
+    # check if the subdomain parameter is provided
+    if [ -n "$2" ]; then
+        # output information for the specified subdomain
+        get_subdomain_info "$2" "$1"
+    else
+        # output information for all default subdomains
+        for subdomain in "${subdomains[@]}"
+        do
+            get_subdomain_info "$subdomain" "$1"
+        done
+    fi
+else
+    # output an error message if no domain parameter was provided
+    echo "Please provide a domain name as the first parameter"
 fi
+
