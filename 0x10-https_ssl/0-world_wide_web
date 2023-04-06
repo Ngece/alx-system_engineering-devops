@@ -18,7 +18,7 @@ function get_subdomain_info {
 # check if the domain parameter is provided
 if [ -n "$1" ]; then
     # add default subdomains
-    subdomains=("www" "lb-01" "web-01" "web-02")
+    subdomains=("www" "105686-lb-01" "105686-web-01" "105686-web-02")
 
     # check if the subdomain parameter is provided
     if [ -n "$2" ]; then
