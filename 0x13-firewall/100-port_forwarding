@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# This script will install socat and forward port 8080 traffic to port 80
+
+sudo apt-get install socat
+sudo socat TCP4-LISTEN:8080,FORK TCP4:localhost:80
+
