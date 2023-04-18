@@ -2,6 +2,7 @@
 # Blocks all ports and opens only TCP ports 22, 443 and 80.
 
 sudo apt-get install ufw
+sed -i 's/IPV6=.*/IPV6=yes/' /etc/default/ufw
 sudo ufw disable
 sudo ufw reset
 sudo ufw default deny incoming
