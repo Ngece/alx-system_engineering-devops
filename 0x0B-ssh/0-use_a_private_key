@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # Connects to my ALX web server via ssh.
 
-ssh -i ~/.ssh/school ubuntu@54.160.72.232
+ssh -i ~/.ssh/school ubuntu@54.165.148.10
 
