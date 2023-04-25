@@ -2,9 +2,9 @@
 import requests
 import csv
 
-# Function to fetch and export TODO list progress to a CSV file for a given employee ID
+""" Function to fetch and export TODO list progress to a CSV file for a given employee ID"""
 def export_employee_todo_progress(employee_id):
-    # Endpoint URL for the REST API
+    """ Endpoint URL for the REST API"""
     url = f'https://jsonplaceholder.typicode.com/users/{employee_id}/todos'
 
     response = requests.get(url)
